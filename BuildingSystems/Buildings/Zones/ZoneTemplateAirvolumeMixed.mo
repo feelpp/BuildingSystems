@@ -42,16 +42,16 @@ model ZoneTemplateAirvolumeMixed
   parameter Boolean calcThermalComfort = false
     "true: PMV and PPD calculated, false: no thermal comfort assessment"
     annotation(HideResult = true, Dialog(tab="Advanced",group="Thermal comfort"));
-  parameter Real clo = 0.5
+  Modelica.Blocks.Interfaces.RealInput clo = 0.5
     "Clothing"
     annotation(HideResult = true, Dialog(tab="Advanced",group="Thermal comfort"));
-  parameter Real met = 1.2
+  Modelica.Blocks.Interfaces.RealInput met = 1.2
     "Metabolism rate"
     annotation(HideResult = true, Dialog(tab="Advanced",group="Thermal comfort"));
   Modelica.Blocks.Interfaces.RealInput wme = 0.0
     "External work"
     annotation(HideResult = true, Dialog(tab="Advanced",group="Thermal comfort"));
-  parameter Modelica.SIunits.Velocity vAir = 0.1
+  Modelica.SIunits.Velocity vAir = 0.1
      "Mean relative air velocity in the area of user presence"
      annotation(HideResult = true, Dialog(tab="Advanced",group="Thermal comfort"));
   parameter Modelica.SIunits.Temp_K T_start = 293.15
