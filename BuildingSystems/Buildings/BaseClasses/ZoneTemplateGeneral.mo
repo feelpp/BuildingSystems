@@ -1,6 +1,7 @@
 within BuildingSystems.Buildings.BaseClasses;
 partial model ZoneTemplateGeneral
   "Template model of a thermal zone"
+  parameter String IfcId="";
   replaceable package Medium = Modelica.Media.Interfaces.PartialMedium
     "Medium in the air model of the zone"
     annotation (choicesAllMatching = true);

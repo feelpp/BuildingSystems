@@ -1,6 +1,7 @@
 within BuildingSystems.Buildings.BaseClasses;
 partial model ConstructionGeneral
   "General model of building constructions (walls, windows, roofs etc.)"
+  parameter String IfcId="";
   BuildingSystems.Buildings.Interfaces.SurfaceToConstructionPort toSurfacePort_1(
     A=ASur,
     abs = abs_1,
