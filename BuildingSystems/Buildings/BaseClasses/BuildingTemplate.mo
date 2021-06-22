@@ -49,7 +49,7 @@ partial model BuildingTemplate
     annotation(Dialog(tab="General",group="Air change"));
   parameter Boolean calcHygroThermal = false
     "Switch for hygro-thermal calculation"
-    annotation(HideResult = true);
+    annotation(HideResult = false);
   parameter Boolean calcIdealLoads = true
     "True: calculation of the ideal heating and cooling load; false: no calculation"
     annotation(HideResult = true,Dialog(tab="General",group="Heat and cooling load calculation"));
