@@ -3,6 +3,7 @@ Sources
 WeatherData
 WeatherDataDWD
 WeatherDataEPW
+WeatherDataIbat
 WeatherDataMeteonorm
 WeatherDataTRYGermany
 Examples
