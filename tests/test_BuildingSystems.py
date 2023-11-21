@@ -52,7 +52,7 @@ def test_checkModel(model):
     dymApp = DymolaInterface(dymolapath=dymolapath, showwindow=False)
 
     # load package
-    isOpen = dymApp.openModel(os.getcwd() + "/../BuildingSystems/package.mo", changeDirectory=False)
+    isOpen = dymApp.openModel(os.getcwd() + "/BuildingSystems/package.mo", changeDirectory=False)
     if isOpen is False:
         logger.error("dymola failed to load the BuildingSystems package")
         dymApp.close()
