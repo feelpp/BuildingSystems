@@ -1,0 +1,32 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - '**' # Push events on all branches
+    paths-ignore:
+      - '.github/workflows/init.yml'
+    tags:
+      - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10 including semver
+
+jobs:
+
+  build_code:
+    runs-on: self-ubuntu-22.04
+    name: Build, Install, Package code
+    if: "!contains(github.event.head_commit.message, 'code skip')"
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+      with:
+        lfs: true
+        recursive: true
+    -
+      name: Python Tests
+      run: |
+        python3 -m venv .venv
+        source .venv/bin/activate
+        pip3 install -r requirements.txt
+        pytest-3
+      env:
+        PYTHONPATH: ${{ github.workspace }}
