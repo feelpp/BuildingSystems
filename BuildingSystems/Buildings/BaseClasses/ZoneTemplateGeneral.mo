@@ -38,8 +38,8 @@ partial model ZoneTemplateGeneral
   parameter BuildingSystems.HAM.ConvectiveHeatTransfer.Types.Convection convectionOnSurfaces = BuildingSystems.HAM.ConvectiveHeatTransfer.Types.Convection.const
     "Type of convection calculation of the zone surfaces"
     annotation(Dialog(tab="Advanced",group="Convection model on building facades"));
-  parameter Modelica.Units.SI.SurfaceCoefficientOfHeatTransfer alphaConstant=
-      1.0 "Convective heat transfer coefficient for simplified calculations"
+  parameter Modelica.Units.SI.SurfaceCoefficientOfHeatTransfer alphaConstant[nConstructions]
+    "Convective heat transfer coefficient for simplified calculations"
     annotation (Dialog(tab="Advanced", group=
           "Convection model on building facades"));
   parameter Integer nMoistureSources = 0
@@ -88,7 +88,7 @@ protected
   BuildingSystems.Buildings.Surfaces.SurfacesToAir surfaces(
     nSurfaces=nConstructions,
     surface(each convectionOnSurface = convectionOnSurfaces,
-            each alphaConstant = alphaConstant))
+    alphaConstant = {alphaConstant[i] for i in 1:nConstructions}))
     "surface models of the zone"
     annotation (Placement(transformation(extent={{-24,-26},{24,26}},origin={-80,40})));
   parameter Integer nHeatSourcesTotal = 0
