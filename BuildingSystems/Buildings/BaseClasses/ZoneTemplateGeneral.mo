@@ -98,7 +98,7 @@ protected
     "Overall number of surfaces of the zone";
   parameter Integer nAirpathsInternal = if prescribedAirchange then 2 else + nAirpaths
     "Overall number of air paths of the zone";
-  constant Modelica.Units.SI.Density rho_nominal=1.2
+  constant Modelica.Units.SI.Density rho_nominal=1.2255
     "Air density under nominal conditions";
 equation
   if viewFacCalcType == BuildingSystems.Buildings.Types.ViewFactorCalculationType.AreaWeighted then
