@@ -150,9 +150,8 @@ protected
     "Specific heat capacity of the window construction";
   final parameter Modelica.Units.SI.Length thicknessPan=sum(constructionData.thickness)
     "Total thickness of all panes";
-  final parameter Modelica.Units.SI.CoefficientOfHeatTransfer UWin=1.0/(-1.0/
-      alphaAmbDIN4701 - 1.0/alphaInsDIN4701 + 1.0/((1.0 - framePortion)*
-      constructionData.UValGla + framePortion*constructionData.UValFra))
+  final parameter Modelica.Units.SI.CoefficientOfHeatTransfer UWin=
+(1.0 - framePortion)* constructionData.UValGla + framePortion * constructionData.UValFra
     "Mean heat transfer coefficient of the window construction without the heat transfer on the surfaces";
 equation
   // Geometry
@@ -179,7 +178,7 @@ equation
       smooth=Smooth.None));
   if calcEmbrasure then
     connect(radTra2to1.radiationPort_in, embrasure.radiationPort_out)
-      annotation (Line(points={{1,-40},{6,-40}}, color={0,0,0}));
+      annotation (Line(points={{-1,-40},{6,-40}},color={0,0,0}));
     connect(embrasure.radiationPort_in, toSurfacePort_2.radiationPort_in)
       annotation (Line(points={{14,-40},{20,-40},{20,0}}, color={0,0,0}));
   else
