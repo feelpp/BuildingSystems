@@ -22,7 +22,8 @@ model RadiationTransmissionSimple
   Modelica.Blocks.Interfaces.RealInput areaRatioUnglazed
     "Unglazed area of the transparent surface";
 equation
-  tauBeam = tauDir0 * BuildingSystems.Utilities.SmoothFunctions.softcut_lower((1.0 - b0 * (1.0 / BuildingSystems.Utilities.SmoothFunctions.softcut_lower(Modelica.Math.cos(Modelica.Constants.pi / 180.0 * radiationPort_in.angleDegInc),0.0,0.001) - 1.0)),0.0,0.001);
+  //tauBeam = tauDir0 * BuildingSystems.Utilities.SmoothFunctions.softcut_lower((1.0 - b0 * (1.0 / BuildingSystems.Utilities.SmoothFunctions.softcut_lower(Modelica.Math.cos(Modelica.Constants.pi / 180.0 * radiationPort_in.angleDegInc),0.0,0.001) - 1.0)),0.0,0.001);
+  tauBeam = b0;
   radiationPort_out.IrrDir = radiationPort_in.IrrDir * (1.0 - GSC) * (1.0 - framePortion) * (tauBeam* (1.0- areaRatioUnglazed) + areaRatioUnglazed);
   radiationPort_out.IrrDif = radiationPort_in.IrrDif * (1.0 - framePortion) * (tauDif * (1.0 - areaRatioUnglazed) + areaRatioUnglazed);
   radiationPort_out.angleDegInc = radiationPort_in.angleDegInc;
